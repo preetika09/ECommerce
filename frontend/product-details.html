@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - ShopVerse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="main-navbar navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand brand-logo me-4" href="/index.html">
+        <i class="fa-solid fa-bag-shopping me-2"></i>Shop<span>Verse</span>
+      </a>
+
+      <form class="d-flex mx-auto search-input-group flex-grow-1 max-w-600 me-lg-4" id="global-search-form" style="max-width: 550px;">
+        <input class="form-control" type="search" id="global-search-input" placeholder="Search across 100+ items..." autocomplete="off">
+        <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <div id="search-suggestions-box" class="search-suggestions"></div>
+      </form>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <div class="d-flex align-items-center ms-auto gap-3 py-2 py-lg-0">
+          <button class="theme-toggle-btn" onclick="toggleTheme()"><i class="theme-toggle-icon fa-solid fa-moon"></i></button>
+          <a href="/wishlist.html" class="nav-icon-btn"><i class="fa-solid fa-heart"></i><span class="badge-count" id="wishlist-badge-count" style="display:none;">0</span></a>
+          <a href="/cart.html" class="nav-icon-btn"><i class="fa-solid fa-cart-shopping"></i><span class="badge-count" id="cart-badge-count" style="display:none;">0</span></a>
+          <div id="auth-nav-container"></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb small">
+        <li class="breadcrumb-item"><a href="/index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="/products.html">Products</a></li>
+        <li class="breadcrumb-item active" id="pd-breadcrumb-title">Product Details</li>
+      </ol>
+    </nav>
+
+    <!-- Main Details Row -->
+    <div class="row g-4 mb-5" id="product-details-container">
+      <!-- Loaded dynamically via script -->
+      <div class="col-12 text-center py-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="mt-2 text-muted">Loading product details...</p>
+      </div>
+    </div>
+
+    <!-- Description & Specifications Tabs -->
+    <div class="card border-0 shadow-sm rounded-4 p-4 mb-5">
+      <ul class="nav nav-tabs border-bottom mb-4" id="detailsTab" role="tablist">
+        <li class="nav-item">
+          <button class="nav-link active fw-bold" id="description-tab" data-bs-toggle="tab" data-bs-target="#description-pane">Description</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link fw-bold" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs-pane">Specifications</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link fw-bold" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews-pane">Customer Reviews</button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="detailsTabContent">
+        <!-- Description Pane -->
+        <div class="tab-pane fade show active" id="description-pane">
+          <p class="text-muted leading-relaxed" id="pd-full-description">Product description will appear here...</p>
+        </div>
+
+        <!-- Specs Pane -->
+        <div class="tab-pane fade" id="specs-pane">
+          <div class="table-responsive">
+            <table class="table table-striped align-middle" id="pd-specs-table">
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Reviews Pane -->
+        <div class="tab-pane fade" id="reviews-pane">
+          <div class="row g-4">
+            
+            <!-- Submit Review Form -->
+            <div class="col-md-5">
+              <div class="card bg-body-tertiary border-0 p-4 rounded-3">
+                <h5 class="fw-bold mb-3">Write a Customer Review</h5>
+                <form id="submit-review-form">
+                  <div class="mb-3">
+                    <label class="form-label fw-semibold">Your Rating</label>
+                    <select class="form-select" id="review-rating" required>
+                      <option value="5">5★ - Excellent</option>
+                      <option value="4">4★ - Very Good</option>
+                      <option value="3">3★ - Average</option>
+                      <option value="2">2★ - Poor</option>
+                      <option value="1">1★ - Terrible</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="review-comment" class="form-label fw-semibold">Your Review</label>
+                    <textarea class="form-control" id="review-comment" rows="4" placeholder="Share details of your experience with this product..." required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary fw-bold w-100">Submit Review</button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Existing Reviews List -->
+            <div class="col-md-7">
+              <h5 class="fw-bold mb-3">Recent Customer Reviews</h5>
+              <div id="reviews-list-container" class="vstack gap-3">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Similar Products Showcase -->
+    <section class="my-5">
+      <div class="section-header">
+        <h3 class="section-title">Similar Products You Might Like</h3>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4" id="similar-products-grid"></div>
+    </section>
+
+  </main>
+
+  <footer class="py-4 bg-dark text-white text-center mt-auto small">
+    <div class="container">&copy; 2026 ShopVerse Inc. All rights reserved.</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/product-details.js"></script>
+</body>
+</html>

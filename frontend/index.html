@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopVerse - Your Complete Online Shopping Destination</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Font Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar text-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span>🎉 <strong class="text-warning">BIG FASHION SALE:</strong> Up to 70% OFF on Top Brands + Free Delivery over ₹999!</span>
+      <div class="d-none d-md-flex gap-3">
+        <span><i class="fa-solid fa-headset me-1"></i> 24/7 Support</span>
+        <span><i class="fa-solid fa-truck-fast me-1"></i> Fast Shipping</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navbar -->
+  <nav class="main-navbar navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand brand-logo me-4" href="/index.html">
+        <i class="fa-solid fa-bag-shopping me-2"></i>Shop<span>Verse</span>
+      </a>
+
+      <!-- Mobile toggler & Theme switch -->
+      <div class="d-flex align-items-center gap-2 d-lg-none me-2">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">
+          <i class="theme-toggle-icon fa-solid fa-moon"></i>
+        </button>
+        <a href="/cart.html" class="nav-icon-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="badge-count" id="cart-badge-count-mobile" style="display:none;">0</span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!-- Search Bar -->
+      <form class="d-flex mx-auto search-input-group flex-grow-1 max-w-600 me-lg-4" id="global-search-form" style="max-width: 550px;">
+        <input class="form-control" type="search" id="global-search-input" placeholder="Search dresses, shoes, electronics, grocery, brands..." autocomplete="off">
+        <button class="btn btn-search" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <div id="search-suggestions-box" class="search-suggestions"></div>
+      </form>
+
+      <!-- Right Nav Icons & Auth -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <div class="d-flex align-items-center ms-auto gap-3 py-2 py-lg-0">
+          
+          <button class="theme-toggle-btn d-none d-lg-block" onclick="toggleTheme()" title="Toggle Theme">
+            <i class="theme-toggle-icon fa-solid fa-moon"></i>
+          </button>
+
+          <a href="/wishlist.html" class="nav-icon-btn d-none d-lg-block" title="Wishlist">
+            <i class="fa-solid fa-heart"></i>
+            <span class="badge-count" id="wishlist-badge-count" style="display:none;">0</span>
+          </a>
+
+          <a href="/cart.html" class="nav-icon-btn d-none d-lg-block" title="Shopping Cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="badge-count" id="cart-badge-count" style="display:none;">0</span>
+          </a>
+
+          <!-- User Profile / Auth Links -->
+          <div id="auth-nav-container" class="ms-lg-2">
+            <!-- Rendered by app.js -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Horizontal Categories Bar -->
+  <div class="category-nav-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="/products.html" class="nav-link fw-bold text-primary"><i class="fa-solid fa-border-all me-1"></i> All Products</a>
+      <a href="/products.html?category=Women's Fashion" class="nav-link">Women's Fashion</a>
+      <a href="/products.html?category=Men's Fashion" class="nav-link">Men's Fashion</a>
+      <a href="/products.html?category=Kids %26 Baby" class="nav-link">Kids & Baby</a>
+      <a href="/products.html?category=Shoes %26 Footwear" class="nav-link">Footwear</a>
+      <a href="/products.html?category=Electronics" class="nav-link">Electronics</a>
+      <a href="/products.html?category=Bags %26 Luggage" class="nav-link">Bags</a>
+      <a href="/products.html?category=Beauty %26 Personal Care" class="nav-link">Beauty</a>
+      <a href="/products.html?category=Home %26 Kitchen" class="nav-link">Home & Kitchen</a>
+      <a href="/products.html?category=Furniture" class="nav-link">Furniture</a>
+      <a href="/products.html?category=Grocery" class="nav-link">Grocery</a>
+      <a href="/products.html?category=Sports %26 Fitness" class="nav-link">Sports</a>
+      <a href="/products.html?category=Books" class="nav-link">Books</a>
+      <a href="/products.html?category=Toys %26 Games" class="nav-link">Toys</a>
+      <a href="/products.html?category=Pet Supplies" class="nav-link">Pet Supplies</a>
+    </div>
+  </div>
+
+  <!-- Hero Carousel Banner -->
+  <div class="container my-4">
+    <div id="heroCarousel" class="carousel slide hero-banner" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        
+        <div class="carousel-item active">
+          <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80');">
+            <div class="hero-overlay">
+              <div class="hero-content">
+                <span class="badge bg-warning text-dark mb-2 fw-bold uppercase">Mega Sale Event</span>
+                <h1>Big Fashion Sale – Up To 70% Off</h1>
+                <p class="fs-5 mb-4">Discover trending Women's, Men's & Kids fashion from top international brands.</p>
+                <a href="/products.html" class="btn btn-primary btn-lg rounded-pill px-4 fw-bold">Shop Fashion Now <i class="fa-solid fa-arrow-right ms-2"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80');">
+            <div class="hero-overlay">
+              <div class="hero-content">
+                <span class="badge bg-danger mb-2 fw-bold">Next-Gen Tech</span>
+                <h1>Flagship Electronics & Mobiles</h1>
+                <p class="fs-5 mb-4">Upgrade to the latest smartphones, laptops, 4K cameras & ANC earbuds.</p>
+                <a href="/products.html?category=Electronics" class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark">Explore Tech <i class="fa-solid fa-laptop ms-2"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80');">
+            <div class="hero-overlay">
+              <div class="hero-content">
+                <span class="badge bg-info mb-2 fw-bold text-dark">Home Makeover</span>
+                <h1>Modern Furniture & Home Decor</h1>
+                <p class="fs-5 mb-4">Elevate your living space with ergonomic furniture and luxury cookware.</p>
+                <a href="/products.html?category=Furniture" class="btn btn-light btn-lg rounded-pill px-4 fw-bold">Shop Home <i class="fa-solid fa-couch ms-2"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+
+  <main class="container mb-5">
+
+    <!-- Top Categories Circles -->
+    <section class="my-5">
+      <div class="section-header">
+        <h2 class="section-title">Shop By Top Categories</h2>
+        <a href="/products.html" class="text-primary fw-semibold">View All Categories <i class="fa-solid fa-chevron-right ms-1"></i></a>
+      </div>
+
+      <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-4 text-center" id="top-categories-grid">
+        <!-- Rendered dynamically via script -->
+      </div>
+    </section>
+
+    <!-- Promotional Strip 1 -->
+    <div class="p-4 rounded-4 my-5 text-white d-flex align-items-center justify-content-between flex-wrap gap-3" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
+      <div>
+        <h3 class="fw-bold mb-1">⚡ Today's Flash Deals - Limited Stock!</h3>
+        <p class="mb-0 text-white-50">Extra 15% instant discount applied at checkout on orders above ₹1,999.</p>
+      </div>
+      <a href="/products.html?sort=discount" class="btn btn-light rounded-pill px-4 fw-bold text-primary">Grab Deals Now</a>
+    </div>
+
+    <!-- Trending Products -->
+    <section class="my-5">
+      <div class="section-header">
+        <h2 class="section-title">Trending Now</h2>
+        <a href="/products.html?sort=popularity" class="text-primary fw-semibold">Explore All <i class="fa-solid fa-chevron-right ms-1"></i></a>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="trending-products-grid">
+        <!-- Product Cards -->
+      </div>
+    </section>
+
+    <!-- Women's Fashion Showcase -->
+    <section class="my-5">
+      <div class="section-header">
+        <h2 class="section-title">Women's Fashion Picks</h2>
+        <a href="/products.html?category=Women's Fashion" class="text-primary fw-semibold">View Collection <i class="fa-solid fa-chevron-right ms-1"></i></a>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="women-products-grid"></div>
+    </section>
+
+    <!-- Men's Fashion Showcase -->
+    <section class="my-5">
+      <div class="section-header">
+        <h2 class="section-title">Men's Fashion Specials</h2>
+        <a href="/products.html?category=Men's Fashion" class="text-primary fw-semibold">View Collection <i class="fa-solid fa-chevron-right ms-1"></i></a>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="men-products-grid"></div>
+    </section>
+
+    <!-- Promotional Strip 2 -->
+    <div class="row g-4 my-5">
+      <div class="col-md-6">
+        <div class="p-4 rounded-4 text-white position-relative overflow-hidden" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); min-height: 180px;">
+          <h4 class="fw-bold mb-2">👟 Footwear & Sneakers</h4>
+          <p class="mb-3">Minimum 40% Off on Nike, Adidas, Puma & Clarks.</p>
+          <a href="/products.html?category=Shoes %26 Footwear" class="btn btn-light btn-sm rounded-pill fw-bold text-success">Shop Footwear</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-4 rounded-4 text-white position-relative overflow-hidden" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); min-height: 180px;">
+          <h4 class="fw-bold mb-2">📱 Gadgets & Accessories</h4>
+          <p class="mb-3">Cases, Chargers & Power Banks starting at just ₹399.</p>
+          <a href="/products.html?category=Mobile Accessories" class="btn btn-light btn-sm rounded-pill fw-bold text-warning text-dark">Shop Accessories</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Electronics Section -->
+    <section class="my-5">
+      <div class="section-header">
+        <h2 class="section-title">Electronics & Smart Gadgets</h2>
+        <a href="/products.html?category=Electronics" class="text-primary fw-semibold">Browse All Electronics <i class="fa-solid fa-chevron-right ms-1"></i></a>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="electronics-products-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4 col-md-6">
+          <a class="brand-logo mb-3 d-inline-block text-white" href="#">
+            <i class="fa-solid fa-bag-shopping me-2"></i>Shop<span class="text-secondary">Verse</span>
+          </a>
+          <p>ShopVerse is your ultimate multi-category online shopping destination for fashion, electronics, home decor, beauty, groceries, and more.</p>
+          <div class="d-flex gap-3 fs-5">
+            <a href="#" class="text-white-50 hover-white"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="text-white-50 hover-white"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="text-white-50 hover-white"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="text-white-50 hover-white"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h5>Shopping</h5>
+          <ul>
+            <li><a href="/products.html?category=Women's Fashion">Women's Fashion</a></li>
+            <li><a href="/products.html?category=Men's Fashion">Men's Fashion</a></li>
+            <li><a href="/products.html?category=Electronics">Electronics</a></li>
+            <li><a href="/products.html?category=Shoes %26 Footwear">Shoes & Footwear</a></li>
+            <li><a href="/products.html?category=Grocery">Grocery Deals</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h5>Customer Care</h5>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="/orders.html">Track Order</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <h5>Stay Connected</h5>
+          <p class="small">Subscribe to our newsletter for exclusive discounts and sale alerts.</p>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Enter your email">
+            <button class="btn btn-primary" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-secondary my-4">
+
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small">
+        <p class="mb-0">&copy; 2026 ShopVerse Inc. All rights reserved. Full Stack Developer Internship Task 1 Project.</p>
+        <div class="d-flex gap-3 mt-2 mt-md-0">
+          <a href="#" class="text-white-50">Privacy Policy</a>
+          <a href="#" class="text-white-50">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- App JS -->
+  <script src="/js/app.js"></script>
+  <!-- Home Page Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      loadTopCategories();
+      loadSectionProducts('/products?limit=8&sort=popularity', 'trending-products-grid');
+      loadSectionProducts('/products?category=Women\'s Fashion&limit=4', 'women-products-grid');
+      loadSectionProducts('/products?category=Men\'s Fashion&limit=4', 'men-products-grid');
+      loadSectionProducts('/products?category=Electronics&limit=4', 'electronics-products-grid');
+    });
+
+    async function loadTopCategories() {
+      const container = document.getElementById('top-categories-grid');
+      if (!container) return;
+
+      try {
+        const res = await apiFetch('/categories');
+        if (res.success) {
+          container.innerHTML = res.categories.slice(0, 6).map(cat => `
+            <div class="col" onclick="window.location.href='/products.html?category=${encodeURIComponent(cat.name)}'">
+              <div class="category-circle-card">
+                <img src="${cat.image || 'https://via.placeholder.com/90'}" class="category-circle-img" alt="${cat.name}">
+                <div class="category-circle-title">${cat.name}</div>
+              </div>
+            </div>
+          `).join('');
+        }
+      } catch (err) {
+        console.error('Failed to load categories:', err);
+      }
+    }
+
+    async function loadSectionProducts(endpoint, gridId) {
+      const grid = document.getElementById(gridId);
+      if (!grid) return;
+
+      // Render Skeleton Loaders initially
+      grid.innerHTML = Array(4).fill(0).map(() => `
+        <div class="col">
+          <div class="product-card">
+            <div class="product-img-wrapper skeleton"></div>
+            <div class="product-body">
+              <div class="skeleton mb-2" style="height: 14px; width: 40%;"></div>
+              <div class="skeleton mb-2" style="height: 18px; width: 85%;"></div>
+              <div class="skeleton mt-auto" style="height: 24px; width: 50%;"></div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      try {
+        const res = await apiFetch(endpoint);
+        if (res.success && res.products.length > 0) {
+          grid.innerHTML = res.products.map(p => renderProductCard(p)).join('');
+        } else {
+          grid.innerHTML = `<div class="col-12 text-center text-muted py-4">No products found</div>`;
+        }
+      } catch (err) {
+        console.error(`Error loading section ${gridId}:`, err);
+      }
+    }
+
+    function renderProductCard(p) {
+      return `
+        <div class="col">
+          <div class="product-card">
+            ${p.discount > 0 ? `<span class="product-badge-discount">-${p.discount}%</span>` : ''}
+            <button class="wishlist-btn-overlay" onclick="toggleWishlist('${p._id}', this)" title="Add to Wishlist">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+            
+            <a href="/product-details.html?id=${p._id}" class="product-img-wrapper">
+              <img src="${p.images[0] || 'https://via.placeholder.com/300'}" alt="${p.name}" loading="lazy">
+            </a>
+
+            <div class="product-body">
+              <div class="product-brand">${p.brand}</div>
+              <a href="/product-details.html?id=${p._id}" class="product-title">${p.name}</a>
+              
+              <div class="d-flex align-items-center gap-1 mb-2">
+                <span class="rating-stars"><i class="fa-solid fa-star"></i> ${p.rating}</span>
+                <span class="text-muted small">(${p.numReviews})</span>
+              </div>
+
+              <div class="product-price-box">
+                <span class="current-price">₹${p.price}</span>
+                ${p.originalPrice > p.price ? `<span class="original-price">₹${p.originalPrice}</span>` : ''}
+              </div>
+
+              <div class="product-actions-btn">
+                <button onclick="addToCart('${p._id}')" class="btn btn-primary"><i class="fa-solid fa-cart-plus me-1"></i> Add</button>
+                <button onclick="openQuickView('${p._id}')" class="btn btn-outline-secondary" title="Quick View"><i class="fa-solid fa-eye"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

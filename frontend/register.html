@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account - ShopVerse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="d-flex flex-column justify-content-between min-vh-100">
+
+  <nav class="navbar border-bottom bg-body">
+    <div class="container justify-content-between">
+      <a class="navbar-brand brand-logo" href="/index.html">
+        <i class="fa-solid fa-bag-shopping me-2"></i>Shop<span>Verse</span>
+      </a>
+      <button class="theme-toggle-btn" onclick="toggleTheme()"><i class="theme-toggle-icon fa-solid fa-moon"></i></button>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-7 col-lg-6">
+        <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5">
+          <div class="text-center mb-4">
+            <div class="bg-primary-subtle text-primary rounded-circle d-inline-flex p-3 mb-3">
+              <i class="fa-solid fa-user-plus fa-2x"></i>
+            </div>
+            <h3 class="fw-bold">Create Account</h3>
+            <p class="text-muted">Join ShopVerse for seamless multi-category shopping</p>
+          </div>
+
+          <div id="register-alert" class="alert alert-danger d-none" role="alert"></div>
+
+          <form id="register-form">
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label fw-semibold">Full Name</label>
+                <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+              </div>
+              <div class="col-md-6">
+                <label for="username" class="form-label fw-semibold">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="johndoe" required>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="email" class="form-label fw-semibold">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
+              </div>
+              <div class="col-md-6">
+                <label for="phone" class="form-label fw-semibold">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" placeholder="+1 9876543210" required>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <label for="password" class="form-label fw-semibold">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Minimum 6 chars" required minlength="6">
+              </div>
+              <div class="col-md-6">
+                <label for="confirmPassword" class="form-label fw-semibold">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter password" required minlength="6">
+              </div>
+            </div>
+
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" id="termsCheck" required>
+              <label class="form-check-label text-muted small" for="termsCheck">
+                I agree to ShopVerse's <a href="#" class="text-primary">Terms of Service</a> and <a href="#" class="text-primary">Privacy Policy</a>.
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold mb-3">Create Free Account</button>
+          </form>
+
+          <div class="text-center">
+            <p class="mb-0 text-muted">Already have an account? <a href="/login.html" class="fw-bold text-primary">Sign In</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-3 text-center text-muted border-top small">
+    <div class="container">&copy; 2026 ShopVerse Inc. All rights reserved.</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>
