@@ -53,7 +53,8 @@ router.get('/', async (req, res) => {
     const query = {};
 
     if (category) {
-      query.category = { $regex: new RegExp(`^${category}$`, 'i') };
+      const cleanCat = decodeURIComponent(category).replace(/&amp;/g, '&').trim();
+      query.category = { $regex: new RegExp(`^${cleanCat.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i') };
     }
     if (subcategory) {
       query.subcategory = { $regex: new RegExp(`^${subcategory}$`, 'i') };
