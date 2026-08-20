@@ -67,6 +67,19 @@ app.get('*', (req, res) => {
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`🚀 ShopVerse Server running on port ${PORT} at http://localhost:${PORT}`);
 });
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    const fallbackPort = 5005;
+    console.log(`⚠️ Port ${PORT} is currently occupied. Switching to fallback port ${fallbackPort}...`);
+    app.listen(fallbackPort, () => {
+      console.log(`🚀 ShopVerse Server running on fallback port ${fallbackPort} at http://localhost:${fallbackPort}`);
+    });
+  } else {
+    console.error('Server error:', err);
+  }
+});
+
