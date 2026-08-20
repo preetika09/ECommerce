@@ -135,7 +135,7 @@ async function fetchProducts(page = 1) {
             </button>
             
             <a href="/product-details.html?id=${p._id}" class="product-img-wrapper">
-              <img src="${p.images[0] || 'https://via.placeholder.com/300'}" alt="${p.name}" loading="lazy">
+              <img src="${p.images[0] || '/images/placeholder.svg'}" alt="${p.name}" loading="lazy" onerror="handleImageError(this)">
             </a>
 
             <div class="product-body">

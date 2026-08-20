@@ -1,6 +1,10 @@
-/* ==========================================================================
-   ShopVerse - Core Frontend Application Framework & Utility Suite
-   ========================================================================== */
+function handleImageError(img) {
+  if (img) {
+    img.onerror = null;
+    img.src = '/images/placeholder.svg';
+  }
+}
+
 
 const API_BASE_URL = '/api';
 

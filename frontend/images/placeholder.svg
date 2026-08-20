@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#e2e8f0"/>
+  <g transform="translate(200, 200)">
+    <rect width="200" height="200" rx="20" fill="#cbd5e1"/>
+    <path d="M40 140 L80 90 L120 130 L150 100 L180 140 Z" fill="#94a3b8"/>
+    <circle cx="70" cy="70" r="18" fill="#f1f5f9"/>
+  </g>
+  <text x="300" y="460" font-family="Segoe UI, sans-serif" font-size="28" font-weight="bold" fill="#64748b" text-anchor="middle">ShopVerse Product</text>
+</svg>
